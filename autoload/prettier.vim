@@ -61,6 +61,8 @@ function! prettier#Prettier(...) abort
   let l:bufferConfig = getbufvar(bufnr('%'), 'prettier_ft_default_args', {})
   let l:config = extend(l:bufferConfig, l:overWrite)
 
+  let l:config['parser'] = getbufvar('%', '&filetype')
+
   if l:execCmd != -1
     " TODO
     " => we should make sure we can resolve --range-start  and --range-end when required
